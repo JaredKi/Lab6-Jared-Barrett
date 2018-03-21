@@ -12,7 +12,7 @@
 // this file also contains an private functions and private data
 #include <stdint.h>
 #include "dac.h"
-#include "../inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 
 // **************Sound_Init*********************
 // Initialize digital outputs and SysTick timer
@@ -20,7 +20,7 @@
 // Input: none
 // Output: none
 void Sound_Init(void){
-  
+
 }
 
 
@@ -35,6 +35,6 @@ void Sound_Init(void){
 //         if period equals zero, disable sound output
 // Output: none
 void Sound_Play(uint32_t period){
-
+	//GPIO_PORTB_DATA_R=
 }
 

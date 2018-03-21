@@ -12,13 +12,24 @@
 // Code files contain the actual implemenation for public functions
 // this file also contains an private functions and private data
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
-
+#include "tm4c123gh6pm.h"
+int keysVal;
 // **************Piano_Init*********************
 // Initialize piano key inputs, called once to initialize the digital ports
 // Input: none 
 // Output: none
-void Piano_Init(void){ }
+void Piano_Init(void){ volatile unsigned long delay;
+	SYSCTL_RCGC2_R |= 0x32;
+	delay = SYSCTL_RCGC2_R;
+  GPIO_PORTE_LOCK_R = 0x4C4F434B;   // 2) unlock GPIO Port F
+	GPIO_PORTE_CR_R = 0x1F;						//unlock ports
+  GPIO_PORTE_AMSEL_R &= ~0x0E;        // 3) disable analog on PF3-1
+  GPIO_PORTE_PCTL_R &= ~0x0E;   // 4) PCTL GPIO on PF3-1
+  GPIO_PORTE_DIR_R |= 0x0E;          // 5) PF3-1 out
+  GPIO_PORTE_AFSEL_R &= ~0x0E;        // 6) disable alt funct on PF3-1
+  GPIO_PORTE_DEN_R |= 0x0E;          // 7) enable digital I/O on PF3-1
+
+}
 
 // **************Piano_In*********************
 // Input from piano key inputs 
@@ -27,5 +38,6 @@ void Piano_Init(void){ }
 //   0x01 is just Key0, 0x02 is just Key1, 0x04 is just Key2
 //   bit n is set if key n is pressed
 uint32_t Piano_In(void){
-  return 0; // Replace with your code
+	keysVal=GPIO_PORTE_DATA_R;
+  return keysVal; // Replace with your code
 }

@@ -11,7 +11,7 @@
 
 
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "Sound.h"
 #include "Piano.h"
 #include "TExaS.h"
@@ -28,6 +28,7 @@ int main(void){
   // other initialization
   EnableInterrupts();
   while(1){ 
+	Piano_In();
   }    
 }
 
