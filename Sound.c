@@ -13,7 +13,8 @@
 #include <stdint.h>
 #include "dac.h"
 #include "tm4c123gh6pm.h"
-	static uint8_t idx=0;
+#include "Sound.h"
+#include "Lab6.c"
 	uint8_t sine[32] = {8, 9, 11, 12, 13, 13, 14, 14, 15, 14, 14, 13, 13, 12, 11, 9, 8, 7, 5, 4, 3, 3,  2, 2, 1, 2, 2, 3, 3, 4, 5, 7};
 
 // **************Sound_Init*********************
@@ -28,7 +29,6 @@ void Sound_Init(void){
 	NVIC_ST_CURRENT_R = 0;
 	NVIC_SYS_PRI3_R = (NVIC_SYS_PRI3_R&0x00FFFFFF) | 0x40000000; //PRIORITY 2
 	NVIC_ST_CTRL_R = 0x00000007;      // enable SysTick with core clock
-	
 }
 
 void SysTick_Handler(){
@@ -46,7 +46,7 @@ void SysTick_Handler(){
 //         if period equals zero, disable sound output
 // Output: none
 void Sound_Play(uint32_t period){
-	NVIC_ST_RELOAD_R=period;
-	
+	NVIC_ST_RELOAD_R=C;
+		period = C*32;
 }
 

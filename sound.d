@@ -2,3 +2,9 @@
 .\sound.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\sound.o: dac.h
 .\sound.o: tm4c123gh6pm.h
+.\sound.o: Sound.h
+.\sound.o: Lab6.c
+.\sound.o: Sound.h
+.\sound.o: Piano.h
+.\sound.o: TExaS.h
+.\sound.o: DAC.h

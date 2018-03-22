@@ -16,12 +16,13 @@
 #include "Piano.h"
 #include "TExaS.h"
 #include "DAC.h"
+
 // basic functions defined at end of startup.s
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 
-
-int main(void){      
+int main(void){
+	
 	SYSCTL_RCGC2_R |= 0x31;
 	while(SYSCTL_RCGC2_R == 0){}
   GPIO_PORTF_LOCK_R = 0x4C4F434B;   // 2) unlock GPIO Port F
@@ -44,8 +45,7 @@ int main(void){
   Sound_Init();
   // other initialization
   EnableInterrupts();
-	unsigned long Data; // 0 to 15 DAC output
-
+	idx = 0;
   DAC_Init();
 
   while(1){ 
