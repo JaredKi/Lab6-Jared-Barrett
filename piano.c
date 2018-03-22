@@ -24,7 +24,7 @@ void Piano_Init(void){ volatile unsigned long delay;
 	SYSCTL_RCGC2_R |= 0x10;
 	delay = SYSCTL_RCGC2_R;
   GPIO_PORTE_AMSEL_R &= ~0x07;        // 3) disable analog on PE2-0
-  GPIO_PORTE_DIR_R |= 0x07;          // 5) PE2-0 out
+  GPIO_PORTE_DIR_R &= ~0x07;          // 5) PE2-0 input
   GPIO_PORTE_AFSEL_R &= ~0x07;        // 6) disable alt funct on PE2-0
   GPIO_PORTE_DEN_R |= 0x07;          // 7) enable digital I/O on PE2-0
 
@@ -37,7 +37,7 @@ void Piano_Init(void){ volatile unsigned long delay;
 //   0x01 is just Key0, 0x02 is just Key1, 0x04 is just Key2
 //   bit n is set if key n is pressed
 uint32_t Piano_In(void){
-	keysVal=GPIO_PORTE_DATA_R;
+	keysVal=(GPIO_PORTE_DATA_R & 0x07);
 	if(keysVal == 0){
 		DisableInterrupts();
 	}
