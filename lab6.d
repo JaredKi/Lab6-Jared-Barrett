@@ -4,3 +4,4 @@
 .\lab6.o: Sound.h
 .\lab6.o: Piano.h
 .\lab6.o: TExaS.h
+.\lab6.o: DAC.h

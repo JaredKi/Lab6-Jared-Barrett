@@ -15,7 +15,7 @@
 #include "Sound.h"
 #include "Piano.h"
 #include "TExaS.h"
-
+#include "DAC.h"
 // basic functions defined at end of startup.s
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
@@ -27,9 +27,15 @@ int main(void){
   Sound_Init();
   // other initialization
   EnableInterrupts();
+	unsigned long Data; // 0 to 15 DAC output
+
+  DAC_Init();
+  for(;;) {
+  DAC_Out(Data);
+  Data = 0x0F&(Data+1); // 0,1,2...,14,15,0,1,2,...
   while(1){ 
 	Piano_In();
   }    
 }
-
+}
 
