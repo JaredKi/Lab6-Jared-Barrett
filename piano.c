@@ -19,15 +19,12 @@ int keysVal;
 // Input: none 
 // Output: none
 void Piano_Init(void){ volatile unsigned long delay;
-	SYSCTL_RCGC2_R |= 0x32;
+	SYSCTL_RCGC2_R |= 0x10;
 	delay = SYSCTL_RCGC2_R;
-  GPIO_PORTE_LOCK_R = 0x4C4F434B;   // 2) unlock GPIO Port F
-	GPIO_PORTE_CR_R = 0x1F;						//unlock ports
-  GPIO_PORTE_AMSEL_R &= ~0x0E;        // 3) disable analog on PF3-1
-  GPIO_PORTE_PCTL_R &= ~0x0E;   // 4) PCTL GPIO on PF3-1
-  GPIO_PORTE_DIR_R |= 0x0E;          // 5) PF3-1 out
-  GPIO_PORTE_AFSEL_R &= ~0x0E;        // 6) disable alt funct on PF3-1
-  GPIO_PORTE_DEN_R |= 0x0E;          // 7) enable digital I/O on PF3-1
+  GPIO_PORTE_AMSEL_R &= ~0x07;        // 3) disable analog on PE2-0
+  GPIO_PORTE_DIR_R |= 0x07;          // 5) PE2-0 out
+  GPIO_PORTE_AFSEL_R &= ~0x07;        // 6) disable alt funct on PE2-0
+  GPIO_PORTE_DEN_R |= 0x07;          // 7) enable digital I/O on PE2-0
 
 }
 
