@@ -1,21 +1,21 @@
 Dependencies for Project 'Lab6', Target 'Lab6': (DO NOT MODIFY !)
-F (.\startup.s)(0x5AB332AC)(--cpu Cortex-M4 -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
-F (.\Sound.c)(0x5AB3398B)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\sound.o --omf_browse .\sound.crf --depend .\sound.d)
-I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C89844)
-I (dac.h)(0x5AB332AC)
-I (tm4c123gh6pm.h)(0x5AB332AC)
-I (Sound.h)(0x5AB332AC)
-F (.\piano.c)(0x5AB33D15)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\piano.o --omf_browse .\piano.crf --depend .\piano.d)
-I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C89844)
-I (tm4c123gh6pm.h)(0x5AB332AC)
-F (.\dac.c)(0x5AB33854)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\dac.o --omf_browse .\dac.crf --depend .\dac.d)
-I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C89844)
-I (tm4c123gh6pm.h)(0x5AB332AC)
-F (.\Lab6.c)(0x5AB33E0C)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\lab6.o --omf_browse .\lab6.crf --depend .\lab6.d)
-I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C89844)
-I (tm4c123gh6pm.h)(0x5AB332AC)
-I (Sound.h)(0x5AB332AC)
-I (Piano.h)(0x5AB332AC)
-I (TExaS.h)(0x5AB332AC)
-I (DAC.h)(0x5AB332AC)
-F (.\texas.o)(0x5AB332AC)()
+F (.\startup.s)(0x5AB324F5)(--cpu Cortex-M4 -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\Sound.c)(0x5AB407D2)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\sound.o --omf_browse .\sound.crf --depend .\sound.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C88A34)
+I (dac.h)(0x5AB324F5)
+I (tm4c123gh6pm.h)(0x5AB324F5)
+I (Sound.h)(0x5AB3F505)
+F (.\piano.c)(0x5AB4077C)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\piano.o --omf_browse .\piano.crf --depend .\piano.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C88A34)
+I (tm4c123gh6pm.h)(0x5AB324F5)
+F (.\dac.c)(0x5AB34041)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\dac.o --omf_browse .\dac.crf --depend .\dac.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C88A34)
+I (tm4c123gh6pm.h)(0x5AB324F5)
+F (.\Lab6.c)(0x5AB40F15)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\.. --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\lab6.o --omf_browse .\lab6.crf --depend .\lab6.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C88A34)
+I (tm4c123gh6pm.h)(0x5AB324F5)
+I (Sound.h)(0x5AB3F505)
+I (Piano.h)(0x5AB324F5)
+I (TExaS.h)(0x5AB324F5)
+I (DAC.h)(0x5AB324F5)
+F (.\texas.o)(0x5AB324F5)()

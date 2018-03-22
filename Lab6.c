@@ -17,9 +17,12 @@
 #include "TExaS.h"
 #include "DAC.h"
 int keysVal2;
+//	uint32_t note, notearray[29] = {A,B,C,D,E,F,G};
+//	uint32_t time, timearray[29] = {500,500,500,500,500,500};
 // basic functions defined at end of startup.s
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
+
 int main(void){volatile unsigned long delay;
 	
 	SYSCTL_RCGC2_R |= 0x31;
@@ -38,16 +41,47 @@ int main(void){volatile unsigned long delay;
   // other initialization
   EnableInterrupts();
   while(1){ 
-		GPIO_PORTF_DATA_R ^= 0x04;
+	GPIO_PORTF_DATA_R ^= 0x04;
 	keysVal2=Piano_In();
 		if(keysVal2 == 0x01)
-			Sound_Play(C);
+			Sound_Play(B);
 		if(keysVal2 == 0x02)
-			Sound_Play(E);
+			Sound_Play(2129);
 		if(keysVal2 == 0x04)
-			Sound_Play(G);
-		
-  }    
+			Sound_Play(A);
+		if(keysVal2 == 0x08)
+			Sound_Play(F);
+//		if(keysVal2 == 0x08){
+//			for(int i=0;i<29;i++){
+//				Timer5A_Init(timearray[i]);
+//			}
+//  }  
+	}
+}  
 
+
+void Timer5A_Init(unsigned short period){ volatile unsigned long Delay;
+  SYSCTL_RCGCTIMER_R |= 0x20;      // 0) activate timer5
+  Delay = 0;                       // wait for completion
+  TIMER5_CTL_R &= ~0x00000001;     // 1) disable timer5A during setup
+  TIMER5_CFG_R = 0x00000004;       // 2) configure for 16-bit timer mode
+  TIMER5_TAMR_R = 0x00000002;      // 3) configure for periodic mode, default down-count settings
+  TIMER5_TAILR_R = period-1;       // 4) reload value
+  TIMER5_TAPR_R = 49;              // 5) 1us timer5A
+  TIMER5_ICR_R = 0x00000001;       // 6) clear timer5A timeout flag
+  TIMER5_IMR_R |= 0x00000001;      // 7) arm timeout interrupt
+  NVIC_PRI23_R = (NVIC_PRI23_R&0xFFFFFF00)|0x00000040; // 8) priority 2
+  NVIC_EN2_R = 0x10000000;         // 9) enable interrupt 19 in NVIC
+  // vector number 108, interrupt number 92
+  TIMER5_CTL_R |= 0x00000001;      // 10) enable timer5A
+// interrupts enabled in the main program after all devices initialized
 }
+
+//				unsigned long Count2=0;
+//				void Timer5A_Handler(void){ // interrupts after each block is transferred
+//				TIMER5_ICR_R = TIMER_ICR_TATOCINT; // acknowledge timer5A timeout
+//				Count2++;
+//				}
+				
+				
 
