@@ -14,6 +14,8 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 int keysVal;
+void EnableInterrupts(void);
+void DisableInterrupts(void);
 // **************Piano_Init*********************
 // Initialize piano key inputs, called once to initialize the digital ports
 // Input: none 
@@ -36,5 +38,13 @@ void Piano_Init(void){ volatile unsigned long delay;
 //   bit n is set if key n is pressed
 uint32_t Piano_In(void){
 	keysVal=GPIO_PORTE_DATA_R;
+	if(keysVal == 0){
+		DisableInterrupts();
+	}
+	else
+	{
+		EnableInterrupts();
+	}
+	
   return keysVal; // Replace with your code
 }

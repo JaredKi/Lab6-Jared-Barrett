@@ -13,6 +13,8 @@
 #include <stdint.h>
 #include "dac.h"
 #include "tm4c123gh6pm.h"
+	static uint8_t idx=0;
+	uint8_t sine[32] = {8, 9, 11, 12, 13, 13, 14, 14, 15, 14, 14, 13, 13, 12, 11, 9, 8, 7, 5, 4, 3, 3,  2, 2, 1, 2, 2, 3, 3, 4, 5, 7};
 
 // **************Sound_Init*********************
 // Initialize digital outputs and SysTick timer
@@ -20,10 +22,19 @@
 // Input: none
 // Output: none
 void Sound_Init(void){
-
+	DAC_Init();
+	NVIC_ST_CTRL_R = 0;               // disable SysTick during setup
+	NVIC_ST_RELOAD_R = 0x0000FFFF;
+	NVIC_ST_CURRENT_R = 0;
+	NVIC_SYS_PRI3_R = (NVIC_SYS_PRI3_R&0x00FFFFFF) | 0x40000000; //PRIORITY 2
+	NVIC_ST_CTRL_R = 0x00000007;      // enable SysTick with core clock
+	
 }
 
-
+void SysTick_Handler(){
+	DAC_Out(sine[idx]);
+	idx=(idx+1)%32;
+}
 // **************Sound_Play*********************
 // Start sound output, and set Systick interrupt period 
 // Sound continues until Sound_Play called again
@@ -35,6 +46,7 @@ void Sound_Init(void){
 //         if period equals zero, disable sound output
 // Output: none
 void Sound_Play(uint32_t period){
-	//GPIO_PORTB_DATA_R=
+	NVIC_ST_RELOAD_R=period;
+	
 }
 
